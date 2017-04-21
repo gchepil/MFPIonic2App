@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{person.name.first}} {{person.name.last}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="person-detail">
+
+  <p>
+    <img [src]="person.picture.large">
+    <br/>
+    {{person.email}}
+  </p>
+
+</ion-content>
