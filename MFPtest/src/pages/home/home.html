@@ -7,12 +7,26 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic MFP Aplication</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+<ion-content padding>  
+  <ion-list no-lines> 
+    <form [formGroup]="convertForm" novalidate (ngSubmit)="convert($event)">
+      <ion-item>
+        <ion-label color="primary" floating>Value</ion-label>
+        <ion-input formControlName="convValue"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Convert From:</ion-label>
+        <ion-select formControlName="from">
+          <ion-option *ngFor="let value of values">{{value}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Convert To:</ion-label>
+        <ion-select formControlName="to">
+          <ion-option *ngFor="let value of values">{{value}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <button type="submit" ion-button secondary>Convert</button>
+    </form>
+   </ion-list>
 </ion-content>
