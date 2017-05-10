@@ -38,14 +38,14 @@
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <mfp:android>
         <mfp:sdkChecksum>2957450250</mfp:sdkChecksum>
-        <mfp:appChecksum>0</mfp:appChecksum>
+        <mfp:appChecksum>4040216813</mfp:appChecksum>
         <mfp:security>
             <mfp:testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3" />
         </mfp:security>
     </mfp:android>
     <mfp:ios>
         <mfp:sdkChecksum>2739290470</mfp:sdkChecksum>
-        <mfp:appChecksum>0</mfp:appChecksum>
+        <mfp:appChecksum>1773378265</mfp:appChecksum>
         <mfp:security>
             <mfp:testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3" />
         </mfp:security>
