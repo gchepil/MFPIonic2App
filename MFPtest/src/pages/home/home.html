@@ -26,7 +26,7 @@
           <ion-option *ngFor="let value of values">{{value}}</ion-option>
         </ion-select>
       </ion-item>
-      <button type="submit" ion-button secondary>Convert</button>
+      <button type="submit" [disabled]="!convertForm.valid" ion-button secondary>Convert</button>
     </form>
    </ion-list>
 </ion-content>
