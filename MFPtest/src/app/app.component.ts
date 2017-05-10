@@ -39,7 +39,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-       this.openPage(this.pages[0]);
+      //this.openPage(this.pages[0]);
     });
   }
 
