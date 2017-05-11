@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ionicframework.mfptest524486" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:mfp="http://www.ibm.com/mobilefirst/cordova-plugin-mfp">
-    <name>MFPtest</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <name>MFPIonic2App</name>
+    <description>MFP test APP</description>
+    <author email="gr.chepil@gmail.com" href="http://ionicframework.com/">GChepil</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
@@ -38,14 +38,14 @@
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <mfp:android>
         <mfp:sdkChecksum>2957450250</mfp:sdkChecksum>
-        <mfp:appChecksum>4040216813</mfp:appChecksum>
+        <mfp:appChecksum>3298186082</mfp:appChecksum>
         <mfp:security>
             <mfp:testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3" />
         </mfp:security>
     </mfp:android>
     <mfp:ios>
         <mfp:sdkChecksum>2739290470</mfp:sdkChecksum>
-        <mfp:appChecksum>1773378265</mfp:appChecksum>
+        <mfp:appChecksum>4008054353</mfp:appChecksum>
         <mfp:security>
             <mfp:testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3" />
         </mfp:security>
