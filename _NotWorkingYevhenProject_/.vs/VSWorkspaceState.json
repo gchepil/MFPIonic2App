@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\javaAdapter",
+    "\\MFPStarterCordova",
+    "\\MFPStarterCordova\\bin\\Android",
+    "\\MFPStarterCordova\\mobilefirst",
+    "\\MFPStarterCordova\\platforms",
+    "\\MFPStarterCordova\\platforms\\android",
+    "\\MFPStarterCordova\\platforms\\android\\assets\\www",
+    "\\MFPStarterCordova\\platforms\\android\\platform_www",
+    "\\MFPStarterCordova\\platforms\\android\\platform_www\\plugins"
+  ],
+  "SelectedNode": "\\MFPStarterCordova\\mobilefirst\\com.ibm.mfpstartercordova-android-1.0.0.zip",
+  "PreviewInSolutionExplorer": false
+}
