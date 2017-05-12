@@ -15,7 +15,7 @@ export class PersonsService {
     }
     
     return new Promise(resolve => {
-      let dataRequest = new WLResourceRequest('adapters/listAdapter/getPersons', WLResourceRequest.GET);
+      let dataRequest = new WLResourceRequest('adapters/personsRestAdapter/getPersons', WLResourceRequest.GET);
       dataRequest.send().then((response) => {
         resolve(response.responseJSON.results);
       });
