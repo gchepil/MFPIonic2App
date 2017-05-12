@@ -12,13 +12,13 @@ var wlInitOptions = {
 
 function wlCommonInit() {
   app.init();
-  // WLAuthorizationManager.obtainAccessToken().then(function() {
-  //     alert(SUCCESS)
-  // },
-  //     function() {
-  //           alert(FAIL)
-  //       }
-  // );
+   WLAuthorizationManager.obtainAccessToken().then(function() {
+       alert(SUCCESS)
+   },
+       function() {
+             alert(FAIL)
+         }
+   );
 }
 
 var app = {
@@ -41,32 +41,29 @@ var app = {
     });
 
 
-      var resourceRequest = new WLResourceRequest(
-          "/adapters/javaAdapter/resource/greet/",
-          WLResourceRequest.GET
-      );
+    WLAuthorizationManager.obtainAccessToken("xxx")
+            .then(function(accessToken) {
+                titleText.innerHTML = "INSIDE";
+                statusText.innerHTML = "Connected.";
+                var resourceRequest = new WLResourceRequest(
+                    "/adapters/javaAdapter/resource/greet/",
+                    WLResourceRequest.GET
+                );
 
-      resourceRequest.setQueryParameter("name", "worldINO");
-      resourceRequest.send().then(
-          function (response) {
-              // Will display "Hello world" in an alert dialog.
-              alert("Success: " + response.responseText);
-          },
-          function (response) {
-              alert("Failure: " + JSON.stringify(response));
-          }
-      );
-
-    // WLAuthorizationManager.obtainAccessToken()
-    //   .then(
-    //     function (accessToken) {
-    //
-    //     },
-    //     function (error) {
-    //       titleText.innerHTML = "Bummer...";
-    //       statusText.innerHTML = "Failed to connect to MobileFirst Server";
-    //     }
-    //     );
+                resourceRequest.setQueryParameter("name", "worldINO");
+                resourceRequest.send().then(
+                    function (response) {
+                        // Will display "Hello world" in an alert dialog.
+                        alert("Success: " + response.responseText);
+                    },
+                    function (response) {
+                        alert("Failure: " + JSON.stringify(response));
+                    }
+                );
+            }, function(error) {
+                titleText.innerHTML = "Bummer...";
+                statusText.innerHTML = "Failed to connect to MobileFirst Server";
+            });          
   },
 
 }

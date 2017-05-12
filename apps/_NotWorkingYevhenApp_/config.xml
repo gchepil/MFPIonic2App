@@ -93,7 +93,7 @@
     </platform>
     <mfp:android>
         <mfp:sdkChecksum>2957450250</mfp:sdkChecksum>
-        <mfp:appChecksum>976944388</mfp:appChecksum>
+        <mfp:appChecksum>3670650378</mfp:appChecksum>
         <mfp:security>
             <mfp:testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3" />
         </mfp:security>
@@ -107,28 +107,28 @@
     </mfp:ios>
     <mfp:windows>
         <mfp:windows8>
-            <mfp:sdkChecksum>0</mfp:sdkChecksum>
+            <mfp:sdkChecksum>779066749</mfp:sdkChecksum>
             <mfp:security>
                 <mfp:testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3" />
             </mfp:security>
         </mfp:windows8>
         <mfp:windowsphone8>
-            <mfp:sdkChecksum>0</mfp:sdkChecksum>
+            <mfp:sdkChecksum>779066749</mfp:sdkChecksum>
             <mfp:security>
                 <mfp:testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3" />
             </mfp:security>
         </mfp:windowsphone8>
         <mfp:windows10>
-            <mfp:sdkChecksum>0</mfp:sdkChecksum>
+            <mfp:sdkChecksum>779066749</mfp:sdkChecksum>
             <mfp:security>
                 <mfp:testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3" />
             </mfp:security>
         </mfp:windows10>
         <mfp:appChecksum>0</mfp:appChecksum>
     </mfp:windows>
-    <mfp:platformVersion>8.0.0.00-20170328-120051</mfp:platformVersion>
+    <mfp:platformVersion>8.0.0.00-20170328-091204</mfp:platformVersion>
     <mfp:clientCustomInit enabled="false" />
-    <mfp:server runtime="mfp" url="http://10.128.225.36:9080" />
+    <mfp:server runtime="mfp" url="http://10.128.129.102:9080" />
     <mfp:directUpdateAuthenticityPublicKey />
     <mfp:languagePreferences>en</mfp:languagePreferences>
 </widget>
