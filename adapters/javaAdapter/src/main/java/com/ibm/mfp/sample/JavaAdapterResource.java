@@ -43,6 +43,9 @@ public class JavaAdapterResource {
 
 	// Define logger (Standard java.util.Logger)
 	static Logger logger = Logger.getLogger(JavaAdapterResource.class.getName());
+        static {
+            logger.info("We are into CLASS!");
+        }
 
 	// Inject the MFP configuration API:
 	@Context
@@ -74,8 +77,8 @@ public class JavaAdapterResource {
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
 	@Path("/greet")
-	public String helloUser(
-			@ApiParam(value = "Name of the person to greet", required = true) @QueryParam("name") String name) {
+	public String helloUser(@ApiParam(value = "Name of the person to greet", required = true) @QueryParam("name") String name) {
+                logger.info("We are into GREET!");
 		return "Hello " + name + "!";
 	}
 
