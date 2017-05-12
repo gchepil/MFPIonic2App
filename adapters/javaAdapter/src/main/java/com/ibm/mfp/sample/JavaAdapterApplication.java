@@ -17,12 +17,12 @@ public class JavaAdapterApplication extends MFPJAXRSApplication{
 	
 
 	protected void init() throws Exception {
-		logger.info("Adapter initialized!");
+		logger.info("Hello from java adapter!");
 	}
 	
 
 	protected void destroy() throws Exception {
-		logger.info("Adapter destroyed!");
+		logger.info("Bye-bye from java adapter!");
 	}
 	
 
