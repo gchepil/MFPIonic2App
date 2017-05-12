@@ -76,4 +76,6 @@
     <mfp:server runtime="mfp" url="http://10.128.193.253:9080" />
     <mfp:directUpdateAuthenticityPublicKey />
     <mfp:languagePreferences>en</mfp:languagePreferences>
+    <engine name="android" spec="~6.2.3" />
+    <plugin name="cordova-plugin-mfp" spec="^8.0.2017033009" />
 </widget>
