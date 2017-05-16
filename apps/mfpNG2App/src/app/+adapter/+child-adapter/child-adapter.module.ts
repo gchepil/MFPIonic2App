@@ -3,17 +3,17 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { routes } from './barrel.routes';
-import { BarrelComponent } from './barrel.component';
+import { routes } from './child-adapter.routes';
+import { ChildAdapterComponent } from './child-adapter.component';
 
-console.log('`Barrel` bundle loaded asynchronously');
+console.log('`ChildBarrel` bundle loaded asynchronously');
 
 @NgModule({
   declarations: [
     /**
      * Components / Directives/ Pipes
      */
-    BarrelComponent,
+    ChildAdapterComponent,
   ],
   imports: [
     CommonModule,
@@ -21,6 +21,6 @@ console.log('`Barrel` bundle loaded asynchronously');
     RouterModule.forChild(routes),
   ],
 })
-export class BarrelModule {
+export class ChildAdapterModule {
   public static routes = routes;
 }
