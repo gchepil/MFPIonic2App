@@ -52,19 +52,11 @@ import { AppState } from './app.service';
     <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
 
     <footer>
-      <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
-      <div>
-        <a [href]="url">
-          <img [src]="angularclassLogo" width="25%">
-        </a>
-      </div>
+      <h1>Some nice ADT footer</h1>
     </footer>
   `
 })
 export class AppComponent implements OnInit {
-  public angularclassLogo = 'assets/img/angularclass-avatar.png';
-  public name = 'Angular 2 Webpack Starter';
-  public url = 'https://twitter.com/AngularClass';
 
   constructor(
     public appState: AppState,
@@ -72,13 +64,7 @@ export class AppComponent implements OnInit {
   ) {
     renderer.listen('document', 'wlInitFinished', () => {
       console.log('---> wlInitFinished event received');
-      WL.AuthorizationManager.login("myCustomScope", { username: "g", password: "g"})
-        .then(function(mess) {
-          console.log("Suc", mess);
-          WL.AuthorizationManager.obtainAccessToken()
-            .then(
-              function (accessToken) {
-                var resourceRequest = new WL.ResourceRequest(
+      var resourceRequest = new WL.ResourceRequest(
                   "/adapters/javaAdapter/resource/protected/",
                   WL.ResourceRequest.GET
                 );
@@ -91,14 +77,6 @@ export class AppComponent implements OnInit {
                     alert("Failure: " + JSON.stringify(response));
                   }
                 );
-              },
-              function (error) {
-                alert(error);
-              }
-            );
-        }, function(mess) {
-          console.log("Fail", mess);
-        });
     });
 
   }
