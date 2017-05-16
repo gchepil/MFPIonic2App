@@ -15,9 +15,7 @@ import { ActivatedRoute } from '@angular/router';
       <pre>npm run start:hmr</pre>
     </div>
     <div>
-      <h3>
-        patrick@AngularClass.com
-      </h3>
+      	<button (click)="requestInfo()" type="button">Request Info</button>
     </div>
     <pre>this.localState = {{ localState | json }}</pre>
   `
@@ -63,6 +61,22 @@ export class AboutComponent implements OnInit {
         });
 
     });
+  }
+
+  requestInfo(){
+    let resourceRequest = new WL.ResourceRequest(
+        "/adapters/YevhensAdapter/resource/jerker",
+        WL.ResourceRequest.GET
+      );
+      resourceRequest.setQueryParameter("name", "worldINO");
+      resourceRequest.send().then(
+        function (response) {
+          console.log("Success: " +JSON.stringify(response));
+        },
+        function (response) {
+          console.log("Failure: " + JSON.stringify(response));
+        }
+      );
   }
 
 }

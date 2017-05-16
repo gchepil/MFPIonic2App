@@ -6,6 +6,8 @@ import {
 import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLargeDirective } from './x-large';
+import { NgForm } from '@angular/forms';
+import LoginChallengeHandler  from "../../challenge-handlers/login"
 
 @Component({
   /**
@@ -30,9 +32,8 @@ import { XLargeDirective } from './x-large';
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-  /**
-   * Set our default values
-   */
+  login: {username?: string, password?: string} = {};
+  submitted = false;
   public localState = { value: '' };
   /**
    * TypeScript public modifiers
@@ -54,4 +55,13 @@ export class HomeComponent implements OnInit {
     this.appState.set('value', value);
     this.localState.value = '';
   }
+
+  onLogin(form: NgForm) {
+    this.submitted = true;
+
+    if (form.valid) {
+      LoginChallengeHandler.login(this.login.username, this.login.password)
+    }
+  }
+
 }

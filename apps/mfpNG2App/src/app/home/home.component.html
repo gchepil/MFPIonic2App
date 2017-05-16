@@ -11,18 +11,31 @@
   <hr>
 
   <div>
-    <h4>Local State</h4>
+    <h4>LOGIN</h4>
 
-    <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
+   <form #loginForm="ngForm" novalidate>
+			<div>
+				<label stacked color="primary">Username</label>
+				<input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
+					required />
+			</div>
+			<p [hidden]="username.valid || submitted == false" color="danger" padding-left>
+				Username is required
+			</p>
 
-      <input
-        [value]="localState.value"
-        (input)="localState.value = $event.target.value"
-        placeholder="Submit Local State to App State"
-        autofocus>
+			<div>
+				<label stacked color="primary">Password</label>
+				<input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required />
+			</div>
+			<p [hidden]="password.valid || submitted == false" color="danger" padding-left>
+				Password is required
+			</p>
 
-      <button>Submit Value</button>
-    </form>
+		<div>
+
+				<button (click)="onLogin(loginForm)" type="submit" block>Login</button>
+		</div>
+	</form>
     <!--
         <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
         Rather than wiring up two-way data-binding ourselves with [value] and (input)

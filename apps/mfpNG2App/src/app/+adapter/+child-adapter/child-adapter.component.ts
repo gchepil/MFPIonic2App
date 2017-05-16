@@ -20,19 +20,7 @@ export class ChildAdapterComponent implements OnInit {
 
   public ngOnInit() {
     console.log('hello `ChildAdapterComponent`');
-     let resourceRequest = new WL.ResourceRequest(
-        "/adapters/javaAdapter/resource/protected/",
-        WL.ResourceRequest.GET
-      );
-      resourceRequest.setQueryParameter("name", "worldINO");
-      resourceRequest.send().then(
-        function (response) {
-          alert("Success: " + response.responseText);
-        },
-        function (response) {
-          alert("Failure: " + JSON.stringify(response));
-        }
-      );
+     
   }
 
 }

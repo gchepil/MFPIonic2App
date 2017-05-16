@@ -8,6 +8,8 @@ import {
   Renderer2
 } from '@angular/core';
 import { AppState } from './app.service';
+import { Router } from '@angular/router'
+import LoginChallengeHandler  from "../challenge-handlers/login"
 
 /**
  * App Component
@@ -58,11 +60,18 @@ export class AppComponent implements OnInit {
 
   constructor(
     public appState: AppState,
-    public renderer: Renderer2
+    public renderer: Renderer2,
+    private router: Router
   ) {
     renderer.listen('document', 'wlInitFinished', () => {
+      
+      LoginChallengeHandler.create();
       console.log('---> wlInitFinished event received');
      // do some stuuf after init like registration check etc...
+    });
+
+    renderer.listen('document', 'redirecttologin', () => {
+      this.router.navigateByUrl('home');
     });
 
   }
