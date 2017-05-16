@@ -35,9 +35,9 @@ import { AppState } from './app.service';
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         Detail
       </a>
-      <a [routerLink]=" ['./barrel'] "
+      <a [routerLink]=" ['./adapter'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Barrel
+        Adapter
       </a>
       <a [routerLink]=" ['./about'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
@@ -64,19 +64,7 @@ export class AppComponent implements OnInit {
   ) {
     renderer.listen('document', 'wlInitFinished', () => {
       console.log('---> wlInitFinished event received');
-      var resourceRequest = new WL.ResourceRequest(
-                  "/adapters/javaAdapter/resource/protected/",
-                  WL.ResourceRequest.GET
-                );
-                resourceRequest.setQueryParameter("name", "worldINO");
-                resourceRequest.send().then(
-                  function (response) {
-                    alert("Success: " + response.responseText);
-                  },
-                  function (response) {
-                    alert("Failure: " + JSON.stringify(response));
-                  }
-                );
+     // do somw stuuf after init like registration check etc...
     });
 
   }

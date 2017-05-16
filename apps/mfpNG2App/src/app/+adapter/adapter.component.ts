@@ -8,24 +8,24 @@ import {
  * see https://github.com/gdi2290/es6-promise-loader for more info
  */
 
-console.log('`Barrel` component loaded asynchronously');
+console.log('`Adapter` component loaded asynchronously');
 
 @Component({
-  selector: 'barrel',
+  selector: 'adapter',
   template: `
-    <h1>Hello from Barrel</h1>
+    <h1>Hello from adapter</h1>
     <span>
-      <a [routerLink]=" ['./child-barrel'] ">
-        Child Barrel
+      <a [routerLink]=" ['./child-adapter'] ">
+        Child adapter
       </a>
     </span>
     <router-outlet></router-outlet>
   `,
 })
-export class BarrelComponent implements OnInit {
+export class AdapterComponent implements OnInit {
 
   public ngOnInit() {
-    console.log('hello `Barrel` component');
+    console.log('hello `adapter` component');
   }
 
 }
