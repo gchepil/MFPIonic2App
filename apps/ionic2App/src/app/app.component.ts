@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { LoginPage } from '../pages/login/login';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,7 +22,7 @@ export class MyApp {
 
     renderer.listen('document', 'wlInitFinished', () => {
         console.log('---> wlInitFinished event received');
-        this.openPage(this.pages[0]);
+        this.openPage( { title: 'Login', component: LoginPage });
     });
    
     // used for an example of ngFor and navigation
@@ -30,7 +31,7 @@ export class MyApp {
       { title: 'List', component: ListPage }
     ];
 
-     //this.rootPage = HomePage;
+     // this.rootPage = LoginPage;
   }
 
   initializeApp() {

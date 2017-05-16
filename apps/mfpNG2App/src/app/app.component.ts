@@ -8,8 +8,6 @@ import {
   Renderer2
 } from '@angular/core';
 import { AppState } from './app.service';
-//import 'ibmmfpfanalytics';
-//import 'ibmmfpf';
 
 /**
  * App Component
@@ -52,7 +50,7 @@ import { AppState } from './app.service';
     <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
 
     <footer>
-      <h1>Some nice ADT footer</h1>
+      <h1>Some nice footer</h1>
     </footer>
   `
 })
@@ -64,7 +62,7 @@ export class AppComponent implements OnInit {
   ) {
     renderer.listen('document', 'wlInitFinished', () => {
       console.log('---> wlInitFinished event received');
-     // do somw stuuf after init like registration check etc...
+     // do some stuuf after init like registration check etc...
     });
 
   }
