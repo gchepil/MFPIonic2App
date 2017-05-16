@@ -85,7 +85,7 @@ public class UsersAdapterResource {
 	// @Produces(MediaType.TEXT_PLAIN)\
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String createUser(@BeanParam final NewUserCard card) {
+	public String createUser(final NewUserCard card) {
 		if (card == null) {
 			return createJsonResponse(createNewUserError("no data"));
 		} else if (isEmpty(card.firstName)) {

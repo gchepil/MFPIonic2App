@@ -79,7 +79,7 @@ public class AddressAdapterResource {
   public static void init() {
 		client = HttpClients.createDefault();
 		// host = new HttpHost("developer.ibm.com");
-		host = new HttpHost(PLACES_API_HOST);
+		host = new HttpHost(PLACES_API_HOST, 443, "https");
 	}
 
   private void execute(final HttpUriRequest req, final HttpServletResponse resultResponse)
