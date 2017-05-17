@@ -6,6 +6,8 @@ import java.util.List;
 public class UserInfo {
   public String firstName;
   public String lastName;
+  public String username;
+  public String password;
   public String userId;
   public int age;
   public List roles;

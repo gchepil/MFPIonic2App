@@ -7,8 +7,8 @@ require.config({
 
 require(['ibmmfpfanalytics', 'ibmmfpf'], function(analytics, WL) {
     var wlInitOptions = {
-        'mfpContextRoot' : '/mfp' ,
-        'applicationId' : 'com.ibm.mfpstartercordova'
+        'mfpContextRoot'        : '/mfp' ,
+        'applicationId'         : 'com.ibm.yevhenStarter'
     };
 
         WL.Client.init(wlInitOptions).always(function(){
@@ -34,37 +34,23 @@ require(['ibmmfpfanalytics', 'ibmmfpf'], function(analytics, WL) {
         statusText.innerHTML = "Connecting to Server...";
         infoText.innerHTML = "";
 
-        WL.AuthorizationManager.login("RegisteredClient", { username: "y", password: "y"})
-                .then(function(mess) {
-                    console.log("Suc", mess);
-                    WL.AuthorizationManager.obtainAccessToken()
-                                .then(
-                                  function (accessToken) {
-                                    titleText.innerHTML = "Yay!";
-                                    statusText.innerHTML = "Connected to MobileFirst Server" ;              
-                                    var resourceRequest = new WLResourceRequest(
-                                      "/adapters/javaAdapter/resource/protected/",
-                                      WLResourceRequest.GET
-                                    );
-                                    resourceRequest.setQueryParameter("name", "worldINO");
-                                    resourceRequest.send().then(
-                                          function (response) {                        
-                                              alert("Success: " + response.responseText);
-                                          },
-                                          function (response) {
-                                              alert("Failure: " + JSON.stringify(response));
-                                          }
-                                    );
-                                  },
-                                  function (error) {
-                                    titleText.innerHTML = "Bummer...";
-                                    statusText.innerHTML = "Failed to connect to MobileFirst Server";
-                                  }
-                                  );
-                        }, function(mess) {
-                            console.log("Fail", mess);
-                    });
-        
+//        WL.AuthorizationManager.login("myCustomScope", {username: 'y', password: 'y123'})
+//            .then(function(mess) {                    
+//                console.log("Suc", mess);
+                titleText.innerHTML = "Yay!";
+                statusText.innerHTML = "Connected to MobileFirst Server" ;              
+                var resourceRequest = new WLResourceRequest("/adapters/javaAdapter/resource/greet", WLResourceRequest.GET);
+                resourceRequest.setQueryParameter("name", "YEVHEN'S NAME");
+                resourceRequest.send().then(
+                    function (response) {       
+                        console.log("Suc", response.responseText);                                              
+                    }, function (response) {
+                        console.log("Failure", JSON.stringify(response));                                              
+                    }
+                );
+//            }, function(mess) {
+//                console.log("Fail", mess);
+//            });        
       },
 
     }

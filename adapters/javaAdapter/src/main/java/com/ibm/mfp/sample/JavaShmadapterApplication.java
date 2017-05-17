@@ -11,9 +11,9 @@ import java.util.logging.Logger;
 
 import com.ibm.mfp.adapter.api.MFPJAXRSApplication;
 
-public class JavaAdapterApplication extends MFPJAXRSApplication{
+public class JavaShmadapterApplication extends MFPJAXRSApplication{
 
-	static Logger logger = Logger.getLogger(JavaAdapterApplication.class.getName());
+	static Logger logger = Logger.getLogger(JavaShmadapterApplication.class.getName());
 	
 
 	protected void init() throws Exception {

@@ -43,10 +43,40 @@ public class UsersAdapterResource {
 	// Define logger (Standard java.util.Logger)
 	static Logger logger = Logger.getLogger(UsersAdapterResource.class.getName());
 
+	private static List<UserInfo> usersList;
 	// Inject the MFP configuration API:
 	@Context
 	ConfigurationAPI configApi;
 
+	public static void init() {
+		usersList = new ArrayList();
+	}
+
+	//Path for method: "<server address>/mfp/api/adapters/UsersAdapter/{username}"
+	@GET
+	@Path("/users")
+	@Produces(MediaType.APPLICATION_JSON)
+	// @Produces(MediaType.TEXT_PLAIN)
+	public String getUsersList() {
+		//lazyInit();
+
+		logger.info("UsersAdapterResource instance " + System.identityHashCode(this));
+		try {
+			Map<String, Object> result = new HashMap<String, Object>();
+			result.put("status", new Integer(200));
+			result.put("error", null);
+
+			logger.info("List contains " + usersList.size());
+
+			Map<String, Object> users = new HashMap<String, Object>();
+			users.put("users", usersList);
+			result.put("data", users);
+			return createJsonResponse(result);
+		} catch (final Exception e) {
+			// TODO
+			return "{}" + e.getMessage();
+		}
+	}
 
 	//Path for method: "<server address>/mfp/api/adapters/UsersAdapter/{username}"
 	@GET
@@ -54,50 +84,81 @@ public class UsersAdapterResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	// @Produces(MediaType.TEXT_PLAIN)
 	public String getUser(@PathParam("userid") String userid) {
+			//lazyInit();
 	// public Map<String, Object> getUser(@PathParam("username") String name){
+			logger.info("UsersAdapterResource instance " + System.identityHashCode(this));
 
-			UserInfo userInfo = new UserInfo();
-			userInfo.firstName = "John";
-			userInfo.lastName = "Deer";
-			userInfo.userId = userid;
-			userInfo.age = 29;
-			userInfo.roles.add("Technician");
-			userInfo.roles.add("Driver");
+			for (final UserInfo ui : usersList) {
+				if (ui.userId.equals(userid)) {
+					Map<String, Object> result = new HashMap<String, Object>();
+					result.put("status", new Integer(200));
+					result.put("error", null);
 
-			try {
-				Map<String, Object> result = new HashMap<String, Object>();
-				result.put("status", new Integer(200));
-				result.put("error", null);
-
-				Map<String, Object> userInfoMap = new HashMap<String, Object>();
-				userInfoMap.put("userInfo", userInfo);
-				result.put("data", userInfoMap);
-				return createJsonResponse(result);
-			} catch (final Exception e) {
-				// TODO
-				return "{}" + e.getMessage();
+					Map<String, Object> userInfoMap = new HashMap<String, Object>();
+					userInfoMap.put("userInfo", ui);
+					result.put("data", userInfoMap);
+					return createJsonResponse(result);
+				}
 			}
+
+			Map<String, Object> result = new HashMap<String, Object>();
+			result.put("status", new Integer(200));
+			result.put("error", "No such user");
+
+			// Map<String, Object> userInfoMap = new HashMap<String, Object>();
+			// userInfoMap.put("userInfo", userInfo);
+			// result.put("data", userInfoMap);
+			return createJsonResponse(result);
+
+			// UserInfo userInfo = new UserInfo();
+			// userInfo.firstName = "John";
+			// userInfo.lastName = "Deer";
+			// userInfo.userId = userid;
+			// userInfo.age = 29;
+			// userInfo.roles.add("Technician");
+			// userInfo.roles.add("Driver");
+			//
+			// try {
+			// 	Map<String, Object> result = new HashMap<String, Object>();
+			// 	result.put("status", new Integer(200));
+			// 	result.put("error", null);
+			//
+			// 	Map<String, Object> userInfoMap = new HashMap<String, Object>();
+			// 	userInfoMap.put("userInfo", userInfo);
+			// 	result.put("data", userInfoMap);
+			// 	return createJsonResponse(result);
+			// } catch (final Exception e) {
+			// 	// TODO
+			// 	return "{}" + e.getMessage();
+			// }
 	}
 
-	//Path for method: "<server address>/mfp/api/adapters/UsersAdapter/{username}"
+	//Path for method: "<server address>/mfp/api/adapters/UsersAdapter/"
 	@POST
-	// @Path("/{username}")
-	// @Produces(MediaType.TEXT_PLAIN)\
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public String createUser(final NewUserCard card) {
+
+		logger.info("UsersAdapterResource instance " + System.identityHashCode(this));
+
 		if (card == null) {
 			return createJsonResponse(createNewUserError("no data"));
 		} else if (isEmpty(card.firstName)) {
 			return createJsonResponse(createNewUserError("mandatory field fisrtName not provided."));
 		}
 
+		//lazyInit();
+
 		UserInfo userInfo = new UserInfo();
 		userInfo.firstName = card.firstName;
 		userInfo.lastName = card.lastName;
+		userInfo.username = card.username;
+		userInfo.password = card.password;
 		userInfo.age = card.age;
 		userInfo.roles = card.roles;
-		userInfo.userId = "randonid_placeholder";
+		userInfo.userId = "userid_" + System.currentTimeMillis();
+
+		usersList.add(userInfo);
 
 		return new Gson().toJson(userInfo);
 	}
@@ -118,6 +179,12 @@ public class UsersAdapterResource {
       return true;
     else
       return false;
+	}
+
+	private void lazyInit() {
+		if (usersList == null) {
+			usersList = new ArrayList();
+		}
 	}
 
 	// //Path for method: "<server address>/mfp/api/adapters/UsersAdapter/{username}"
