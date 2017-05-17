@@ -1,2 +1,4 @@
-com\ibm\mfp\sample\JavaAdapterApplication.class
-com\ibm\mfp\sample\JavaAdapterResource.class
+com\ibm\mfp\sample\WhateverNamedResourceClass.class
+com\ibm\mfp\sample\YevhenSecurityCheck$YevhenConfig.class
+com\ibm\mfp\sample\JavaShmadapterApplication.class
+com\ibm\mfp\sample\YevhenSecurityCheck.class

@@ -35,14 +35,14 @@ import com.ibm.mfp.adapter.api.OAuthSecurity;
 
 @Api(value = "Sample Adapter Resource")
 @Path("/resource")
-public class JavaAdapterResource {
+public class WhateverNamedResourceClass {
 	/*
 	 * For more info on JAX-RS see
 	 * https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/index.html
 	 */
 
 	// Define logger (Standard java.util.Logger)
-	static Logger logger = Logger.getLogger(JavaAdapterResource.class.getName());
+	static Logger logger = Logger.getLogger(WhateverNamedResourceClass.class.getName());
         static {
             logger.info("We are into CLASS!");
         }
@@ -72,14 +72,15 @@ public class JavaAdapterResource {
 	 * "<server address>/mfp/api/adapters/javaAdapter/resource/greet?name={name}"
 	 */
 
-	@ApiOperation(value = "Query Parameter Example", notes = "Example of passing query parameters to a resource. Returns a greeting containing the name that was passed in the query parameter.")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "Greeting message returned") })
+	@ApiOperation(value = "HEAVILY MODIFIED GET-METHOD", notes = "Try me with passing me a name parameter...")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "All good, all good, jerks!") })
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
-	@Path("/greet")
-	public String helloUser(@ApiParam(value = "Name of the person to greet", required = true) @QueryParam("name") String name) {
-                logger.info("We are into GREET!");
-		return "Hello " + name + "!";
+	@Path("/jerker")
+        @OAuthSecurity(scope = "requestFromCorrectLoginPasswordPair")
+	public String helloUser(@ApiParam(value = "Name of the person to hurt", required = true) @QueryParam("name") String name) {
+                logger.info("We are into JERK! Request is: "+name);
+		return "Who is a jerk? The " + name + " is a jerk!";
 	}
 
 	/*
