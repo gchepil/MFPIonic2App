@@ -11,6 +11,7 @@ public class UsersAdapterApplication extends MFPJAXRSApplication{
 
 	protected void init() throws Exception {
 		AddressAdapterResource.init();
+		UsersAdapterResource.init();
 		logger.info("Adapter initialized!");
 	}
 
