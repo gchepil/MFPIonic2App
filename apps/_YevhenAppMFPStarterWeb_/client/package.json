@@ -1,6 +1,5 @@
 {
-  "name": "mfpstarterweb-client",
-  "version": "1.0.0",
+  "name": "starterWEBOK1",    
   "description": "MFPStarterWeb-client holds the ibm-mfp-sdk and requirejs, two node_modules that are mandatory for this sample",
   "dependencies": {
     "requirejs": "latest"
