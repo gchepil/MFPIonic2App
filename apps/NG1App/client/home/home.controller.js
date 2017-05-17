@@ -5,8 +5,8 @@
         .module('app')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['UserService', '$rootScope'];
-    function HomeController(UserService, $rootScope) {
+    HomeController.$inject = ['UserService','UserServiceMFP', '$rootScope'];
+    function HomeController(UserService, UserServiceMFP, $rootScope) {
         var vm = this;
 
         vm.user = null;
@@ -28,9 +28,9 @@
         }
 
         function loadAllUsers() {
-            UserService.GetAll()
-                .then(function (users) {
-                    vm.allUsers = users;
+            UserServiceMFP.GetAll()
+                .then(function (response) {
+                    vm.allUsers = response.data.users;
                 });
         }
 

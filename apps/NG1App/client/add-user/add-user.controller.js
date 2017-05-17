@@ -16,13 +16,12 @@
             UserServiceMFP.Create(vm.user)
                 .then(function (response) {
                     vm.dataLoading = false;
-                    if (response.responseJSON.error) {
-                        FlashService.Error(response.responseJSON.error);
+                    if (response.error) {
+                        FlashService.Error(response.error);
                     } else {
-                        FlashService.Success('User '+ response.responseJSON.username +' added successfuly', true);
+                        FlashService.Success('User '+ response.username +' added successfuly', true);
                         $location.path('/');
                     }
-                    $rootScope.$digest(); //todo Wlresourse request not call digest !!!!!improve integration
                 });
         }
     }
