@@ -40,15 +40,9 @@
                     ibmmfpfanalytics.logger.error('exception:'+ exception + '; cause' + cause);
                     // (Optional) Pass the error through to the delegate
                     $delegate(exception, cause);
-                };
+                    };
                 }]);
 
-             var wlInitOptions = {
-                'mfpContextRoot' : '/mfp' ,
-                'applicationId' : 'greg.ng1'
-            };
-
-            WL.Client.init(wlInitOptions)
     }
 
     run.$inject = ['$rootScope', '$location', '$cookies', '$http'];
@@ -68,5 +62,27 @@
             }
         });
     }
+
+
+    var wlInitOptions = {
+        'mfpContextRoot' : '/mfp' ,
+        'applicationId' : 'greg.ng1'
+    };
+
+    WL.Client.init(wlInitOptions).then(function(){
+        console.log('inited');
+        ibmmfpfanalytics.enableAutoSend();
+
+        // due to fact that IBM initialization is Async proccess it better to bootstrap App manually after init happen, to make sure no angular code is executed before
+        angular.element(document).ready(function () {
+            angular.bootstrap(document, ['app']);
+        });
+    });
+
+    setTimeout(function(){
+        console.log('just check if init in sync or async');
+    }, 0);
+
+
 
 })();
