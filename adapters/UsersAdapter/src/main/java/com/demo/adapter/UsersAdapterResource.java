@@ -19,6 +19,8 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
@@ -134,6 +136,73 @@ public class UsersAdapterResource {
 	}
 
 	//Path for method: "<server address>/mfp/api/adapters/UsersAdapter/"
+	@PUT
+	@Path("/{userid}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String createUser(@PathParam("userid") String userid, final NewUserCard card) {
+		logger.info("UsersAdapterResource instance " + System.identityHashCode(this));
+
+		if (isEmpty(userid)) {
+			Map<String, Object> result = new HashMap<String, Object>();
+			result.put("status", new Integer(400));
+			result.put("error", "Proper userid should be specifiedd.");
+
+			return createJsonResponse(result);
+		}
+
+		for (final UserInfo ui : usersList) {
+			if (ui.userId.equals(userid)) {
+				Map<String, Object> result = new HashMap<String, Object>();
+				result.put("status", new Integer(200));
+				result.put("error", null);
+				usersList.remove(ui);
+				UserInfo userInfo = copyUserInfo(card);
+				userInfo.userId = ui.userId;
+				usersList.add(userInfo);
+				return createJsonResponse(result);
+			}
+		}
+
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("status", new Integer(400));
+		result.put("error", "Proper userid should be specifiedd.");
+		return createJsonResponse(result);
+	}
+
+	//Path for method: "<server address>/mfp/api/adapters/UsersAdapter/"
+	@DELETE
+	@Path("/{userid}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String createUser(@PathParam("userid") String userid) {
+		logger.info("UsersAdapterResource instance " + System.identityHashCode(this));
+
+		if (isEmpty(userid)) {
+			Map<String, Object> result = new HashMap<String, Object>();
+			result.put("status", new Integer(400));
+			result.put("error", "Proper userid should be specifiedd.");
+
+			return createJsonResponse(result);
+		}
+
+		for (final UserInfo ui : usersList) {
+			if (ui.userId.equals(userid)) {
+				Map<String, Object> result = new HashMap<String, Object>();
+				result.put("status", new Integer(200));
+				result.put("error", null);
+				usersList.remove(ui);
+				return createJsonResponse(result);
+			}
+		}
+
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("status", new Integer(400));
+		result.put("error", "Proper userid should be specifiedd.");
+		return createJsonResponse(result);
+	}
+
+	//Path for method: "<server address>/mfp/api/adapters/UsersAdapter/"
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -149,13 +218,7 @@ public class UsersAdapterResource {
 
 		//lazyInit();
 
-		UserInfo userInfo = new UserInfo();
-		userInfo.firstName = card.firstName;
-		userInfo.lastName = card.lastName;
-		userInfo.username = card.username;
-		userInfo.password = card.password;
-		userInfo.age = card.age;
-		userInfo.roles = card.roles;
+		UserInfo userInfo = copyUserInfo(card);
 		userInfo.userId = "userid_" + System.currentTimeMillis();
 
 		usersList.add(userInfo);
@@ -179,6 +242,17 @@ public class UsersAdapterResource {
       return true;
     else
       return false;
+	}
+
+	private UserInfo copyUserInfo(final NewUserCard card) {
+		final UserInfo userInfo = new UserInfo();
+		userInfo.firstName = card.firstName;
+		userInfo.lastName = card.lastName;
+		userInfo.username = card.username;
+		userInfo.password = card.password;
+		userInfo.age = card.age;
+		userInfo.roles = card.roles;
+		return userInfo;
 	}
 
 	private void lazyInit() {
