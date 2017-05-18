@@ -31,7 +31,7 @@
         }
 
         function Delete(id) {
-             return alert('implement me')
+             return ReqestService.sendRequest('/adapters/UsersAdapter/' + id, WLResourceRequest.DELETE);
         }
 
         function GetById(id) {

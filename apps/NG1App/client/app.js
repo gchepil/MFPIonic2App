@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('app', ['ngRoute', 'ngCookies'])
+        .module('app', ['ngRoute', 'ngCookies', 'ui.bootstrap'])
         .config(config)
         .run(run);
 
-    config.$inject = ['$routeProvider', '$locationProvider'];
-    function config($routeProvider, $locationProvider) {
+    config.$inject = ['$routeProvider', '$locationProvider', '$provide'];
+    function config($routeProvider, $locationProvider, $provide) {
         $routeProvider
             .when('/', {
                 controller: 'HomeController',
@@ -34,6 +34,14 @@
 
 
             .otherwise({ redirectTo: '/login' });
+
+            $provide.decorator("$exceptionHandler", ["$delegate", "$window", function($delegate, $window) {
+                return function (exception, cause) {
+                    ibmmfpfanalytics.logger.error('exception:'+ exception + '; cause' + cause);
+                    // (Optional) Pass the error through to the delegate
+                    $delegate(exception, cause);
+                };
+                }]);
 
              var wlInitOptions = {
                 'mfpContextRoot' : '/mfp' ,

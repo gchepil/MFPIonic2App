@@ -4,11 +4,19 @@
 <ul>
     <li ng-repeat="user in vm.allUsers">
         {{user.username}} ({{user.firstName}} {{user.lastName}})
-        - <a ng-click="vm.deleteUser(user.id)">Delete</a>
+        - <a ng-click="vm.deleteUser(user.userId)">Delete</a>
     </li>
 </ul>
+<div style="font-size:40px;" ng-if="vm.checkVisible">
+    <span uib-rating ng-model="vm.rate" max="vm.max" on-hover="vm.hoveringOver(value)" on-leave="vm.overStar = null" aria-labelledby="default-rating"></span>
+    <span ng-show="vm.overStar">{{vm.percent}}%</span>
+    <button ng-click="vm.submitPincode()" class="btn btn-block" type="button">submit pin</button>
+    select 4 star to pass
+</div>
+
 <p>&nbsp;</p>
 <p>
     <a href="#!/login" class="btn btn-primary">Logout</a>
-    <a href="#!/add-user" class="btn btn-primary">Add User</a>
+    <a href="#!/add-user" class="btn btn-primary">Add User</a>   
 </p>
+<button ng-click="vm.requestInfo()" type="button">Request Info</button>

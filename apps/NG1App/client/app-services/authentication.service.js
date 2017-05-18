@@ -17,6 +17,14 @@
 
         function Login(username, password, callback) {
 
+            WLAuthorizationManager.login("requestFromCorrectLoginPasswordPair",{'login':username, 'password': password}).then(
+                function () {
+                    console.log("login onSuccess");
+                },
+                function (response) {
+                    console.log("login onFailure: " + JSON.stringify(response));
+            });
+
             /* Dummy authentication for testing, uses $timeout to simulate api call
              ----------------------------------------------*/
             $timeout(function () {
