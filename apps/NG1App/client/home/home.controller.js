@@ -50,7 +50,7 @@
         function loadAllUsers() {
             UserServiceMFP.GetAll()
                 .then(function (response) {
-                    vm.allUsers = response.data.users;
+                    vm.allUsers = response.results;
                 });
         }
 

@@ -18,7 +18,7 @@
         return service;
 
         function GetAll() {
-            return ReqestService.sendRequest('/adapters/UsersAdapter/users', WLResourceRequest.GET);
+            return ReqestService.sendRequest('/adapters/personsRestAdapter/getPersons', WLResourceRequest.GET);
         }
 
 
