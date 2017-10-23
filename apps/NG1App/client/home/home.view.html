@@ -2,7 +2,7 @@
 <p>You're logged in!!</p>
 <h3>All users from MFP Adapter:</h3>
 <ul>
-    <li ng-repeat="user in vm.allUsers">
+    <li gender-directive gender="male" action="hasGender" model="user" ng-repeat="user in vm.allUsers">
         {{user.name.title}} {{user.name.first}} {{user.name.last}}
         - <a ng-click="vm.deleteUser(user.userId)">Delete</a>
     </li>

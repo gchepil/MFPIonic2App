@@ -25,7 +25,7 @@ var server = http.createServer(app);
 var port = 9081;
 
 // MFP url, unless set in npm start arg, this is set to localhost:9080
-var mfpURL = process.argv[2] || 'http://macmini163:9080';
+var mfpURL = process.argv[2] || 'http://localhost:9080';
 
 server.listen(port);
 console.log('::: Node.js server - Listening on port ' + port + ' :::');
