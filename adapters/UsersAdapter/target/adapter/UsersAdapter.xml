@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mfp:adapter name="UsersAdapter"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mfp="http://www.ibm.com/mfp/integration"
+	xmlns:http="http://www.ibm.com/mfp/integration/http">
+
+	<displayName>UsersAdapter</displayName>
+	<description>UsersAdapter</description>
+
+	<!-- <connectivity>
+		<connectionPolicy xsi:type="wl:NullConnectionPolicyType"></connectionPolicy>
+	</connectivity> -->
+	<!-- <connectivity>
+	  <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
+      <protocol>https</protocol>
+      <domain>maps.googleapis.com</domain>
+      <port>443</port>
+      <connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds>
+      <socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds>
+      <maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode>
+	  </connectionPolicy>
+	</connectivity> -->
+
+	<JAXRSApplicationClass>com.demo.adapter.UsersAdapterApplication</JAXRSApplicationClass>
+</mfp:adapter>
