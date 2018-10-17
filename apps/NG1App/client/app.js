@@ -83,6 +83,4 @@
         console.log('just check if init in sync or async');
     }, 0);
 
-
-
 })();
