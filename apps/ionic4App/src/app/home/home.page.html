@@ -14,5 +14,17 @@
   <p>If you get lost, the
     <a target="_blank" rel="noopener" href="https://ionicframework.com/docs">docs</a> will be your guide.</p>
     {{myvar}}
-    <p><button ion-button (click)="getBalance()">button name</button></p>
+    
+    <p>
+      <ion-button (click)="getBalance()" expand="full">Add users</ion-button>
+    </p>
+
+    <ion-list>
+      <ion-item *ngFor ="let item of items">
+        <ion-avatar slot="start">
+          <img [src]="item.picture.thumbnail">
+        </ion-avatar>
+        <ion-label>{{item.name.first}} {{item.name.last}}</ion-label>
+      </ion-item>
+    </ion-list>
 </ion-content>

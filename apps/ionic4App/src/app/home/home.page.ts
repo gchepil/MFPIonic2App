@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -6,33 +7,43 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  private loading: any;
   myvar: string = 'Text from class';
+  items: any = [{
+    'name': {
+      'first': 'igor',
+      'last': 'lastname',
+    }, 
+    'picture': {
+      'thumbnail': 'https://randomuser.me/api/portraits/thumb/men/21.jpg'
+    },
+    'email': 'ken.ray@example.com'
+  }];
 
-  constructor() {
+  constructor(private ref: ChangeDetectorRef, public loadingController: LoadingController) {
     this.myvar = 'Text changed in constructor HomePage and added to template as {{myvar}}. And new string of text';
   }
 
-  getBalance() {
-    console.log(WL.App.getServerUrl);
-    console.log(WL.App);
-    // console.log(WL.Client.getEnvironment())
-    // console.log(WL.App.aloha());
-    // WL.App.getServerUrl(function(response) {
-    //   console.log(123);
-    // }, function(error) {
-    //   console.log(3321);
-    // });
-    
+  private async presentLoading(): Promise<any> {
+    this.loading = await this.loadingController.create();
+    return await this.loading.present();
+  }
 
+  private dismissLoading() {
+    this.loading.dismiss();
+  }
+
+  getBalance() {
+    this.presentLoading();
     var resourceRequest = new WLResourceRequest("/adapters/personsRestAdapter/getPersons", WLResourceRequest.GET);
         resourceRequest.send().then(
           (response) => {
-            console.log(response);
-            alert("Success: " + response.responseText);
+            this.dismissLoading();
+            this.items = response.responseJSON.results.slice(0, 10);
+            this.ref.detectChanges();
           },
           (error) => {
-            console.log(error);
-            alert("Failure: " + JSON.stringify(error));
+            this.dismissLoading();
           }
         );
   }
