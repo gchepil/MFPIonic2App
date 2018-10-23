@@ -9,7 +9,8 @@
   "dependencies": {
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.3",
-    "react-native-ibm-mobilefirst": "^8.0.2018101016"
+    "react-native-ibm-mobilefirst": "^8.0.2018101016",
+    "react-native-sortable-list": "0.0.22"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
