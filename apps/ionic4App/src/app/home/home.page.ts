@@ -9,16 +9,7 @@ import { LoadingController } from '@ionic/angular';
 export class HomePage {
   private loading: any;
   myvar: string = 'Text from class';
-  items: any = [{
-    'name': {
-      'first': 'igor',
-      'last': 'lastname',
-    }, 
-    'picture': {
-      'thumbnail': 'https://randomuser.me/api/portraits/thumb/men/21.jpg'
-    },
-    'email': 'ken.ray@example.com'
-  }];
+  items: any;
 
   constructor(private ref: ChangeDetectorRef, public loadingController: LoadingController) {
     this.myvar = 'Text changed in constructor HomePage and added to template as {{myvar}}. And new string of text';
@@ -33,7 +24,7 @@ export class HomePage {
     this.loading.dismiss();
   }
 
-  getBalance() {
+  getUsers() {
     this.presentLoading();
     var resourceRequest = new WLResourceRequest("/adapters/personsRestAdapter/getPersons", WLResourceRequest.GET);
         resourceRequest.send().then(
@@ -46,5 +37,10 @@ export class HomePage {
             this.dismissLoading();
           }
         );
+  }
+
+  toggleEdit() {
+    const reorderGroup: any = document.getElementById('reorder');
+    reorderGroup.disabled = !reorderGroup.disabled;
   }
 }
