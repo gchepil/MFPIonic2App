@@ -8,10 +8,9 @@
   },
   "author": "IBM MobileFirst Platform Foundation",
   "license": "SEE LICENSE IN README.MD",
-  "scripts" :
-  {
+  "scripts": {
     "client": "cd ../client && npm install",
     "proxy": "npm install",
-    "prestart" : "npm run proxy"
+    "prestart": "npm run proxy"
   }
 }

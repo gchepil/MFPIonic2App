@@ -3,7 +3,32 @@
 
     angular
         .module('app')
-        .controller('HomeController', HomeController);
+        .controller('HomeController', HomeController)
+        .filter('gender', function() {
+            // gender: male, female
+            // action: hasGender, exceptGender
+            return function(items, gender, action) {
+                console.log(gender, action);
+                var filtered = [];
+                for (var i=0; i<items.length; i++) {
+                    switch (action) {
+                        case 'hasGender':
+                            if(items[i].gender == gender){
+                                filtered.push(items[i]);
+                            }
+                            break;
+                        case 'exceptGender':
+                            if(items[i].gender != gender){
+                                filtered.push(items[i]);
+                            }
+                            break;
+                    }
+                }
+                return filtered;
+            };
+        });
+
+
 
     HomeController.$inject = ['UserService','UserServiceMFP', '$rootScope'];
     function HomeController(UserService, UserServiceMFP, $rootScope) {
@@ -20,6 +45,7 @@
         vm.overStar = null;
         vm.rate = 0;
         vm.max = 5;
+        vm.userId = Math.floor(Math.random() * 10) + 1; 
 
         initController();
 
@@ -54,25 +80,26 @@
                 });
         }
 
-        function deleteUser(id) {
-            UserServiceMFP.Delete(id)
-            .then(function () {
-                loadAllUsers();
-            });
+        function deleteUser(email) {        
+            for (var i=0; i<vm.allUsers.length; i++) {
+                if (vm.allUsers[i].email == email) {
+                    vm.allUsers.splice(i, 1);
+                }
+            }
         }
 
         function requestInfo() {
             var resourceRequest = new WL.ResourceRequest(
-                "/adapters/YevhensAdapter/resource/jerker",
+                "/adapters/requestInfoAdapter/getInfo",
                 WL.ResourceRequest.GET
             );
-            resourceRequest.setQueryParameter("name", "worldINO");
+            resourceRequest.setQueryParameter("params", [vm.userId]);
             resourceRequest.send().then(
                 function (response) {
-                alert("Success: " +JSON.stringify(response));
+                    alert("Success!\nuser ID" + vm.userId + " has name: " + response.responseJSON.name);
                 },
                 function (response) {
-                alert("Failure: " + JSON.stringify(response));
+                    alert("Failure: " + JSON.stringify(response));
                 }
             );
         }

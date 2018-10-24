@@ -24,5 +24,5 @@
 	</connectivity>
 
 	<procedure name="getPersons" secured="false"/>
-
+	
 </mfp:adapter>

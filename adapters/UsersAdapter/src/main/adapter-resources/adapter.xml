@@ -22,5 +22,5 @@
 	  </connectionPolicy>
 	</connectivity> -->
 
-	<JAXRSApplicationClass>com.demo.adapter.UsersAdapterApplication</JAXRSApplicationClass>
+	<!-- <JAXRSApplicationClass>com.demo.adapter.UsersAdapterApplication</JAXRSApplicationClass> -->
 </mfp:adapter>
