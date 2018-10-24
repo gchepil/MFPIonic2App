@@ -5,5 +5,6 @@ function getPersons(tag) {
 	    path : '?results=30&nat=us'
 	};
 
+	MFP.Logger.info('test');
 	return MFP.Server.invokeHttp(input);
 }
