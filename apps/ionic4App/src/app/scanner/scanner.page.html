@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      List
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-content *ngIf="result">
+      <p>text: {{result.text}}</p>
+      <p>format: {{result.format}}</p>
+      <p>cancelled: {{result.cancelled}}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button (click)="scanBarcode()" color="secondary" expand="full">try barcode</ion-button>
+
+  <ion-button color="success" expand="block" *ngIf="result.text" (click)="openBrowser()">
+    Go to link
+    <ion-icon slot="start" name="link"></ion-icon>
+  </ion-button>
+
+</ion-content>

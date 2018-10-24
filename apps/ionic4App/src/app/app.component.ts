@@ -21,6 +21,11 @@ export class AppComponent {
       title: 'List',
       url: '/list',
       icon: 'list'
+    },
+    {
+      title: 'Scanner',
+      url: '/scanner',
+      icon: 'qr-scanner'
     }
   ];
 
